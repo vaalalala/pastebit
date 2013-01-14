@@ -4,10 +4,10 @@ require_relative './spec_helper'
 ENV['RACK_ENV'] = 'test'
 
 def app
-  PasteBit.new
+  PasteBit
 end
 
-describe 'The PasteBit App' do
+describe 'The PasteBit App', type: :feature do
 
   it "displays the home page" do
     get '/'
@@ -16,13 +16,8 @@ describe 'The PasteBit App' do
   end
 
   it "displays a text area to paste content into" do
-    get '/'
-    last_response.body.include? 'textarea'
-  end
-
-  it "diplays a text area to paste into" do
-    #visit '/'
-    #page.should have_content 'textarea'
+    visit '/'
+    find("textarea").should be_visible
   end
 
 end
