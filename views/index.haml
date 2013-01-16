@@ -1,4 +1,6 @@
-%form{action: '/store', method: 'post'}
-  %textarea{name:"pasted_content", cols:'140', rows:'25'}
+%h1 Paste Ahoy!
+%p Paste your content into the box below and hit the "Paste it" button
+%form{id: 'paste_form', action: '/store', method: 'post'}
+  %textarea{name:"pasted_content", cols:'140', rows:'15'}
   %br
-  %input{type:'submit', value:'Paste'}
+  %input{id: 'paste_button', type:'submit', value:'Paste it!'}

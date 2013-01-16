@@ -8,30 +8,42 @@ def app
 end
 
 describe 'The PasteBit App', type: :feature do
+  let(:the_home_page){'/'}
+
+  def the_paste_it_button
+    within("form[@id='paste_form']") do
+      find_button 'paste_button'
+    end
+  end
 
   it "displays the home page" do
-    get '/'
+    get the_home_page
     last_response.should be_ok
     last_response.body.include? "PasteBit"
   end
 
   it "displays a text area to paste content into" do
-    visit '/'
+    visit the_home_page
     find("textarea").should be_visible
   end
 
-  it "has a paste button"
+  it "has a paste button" do
+    visit the_home_page
+    the_paste_it_button.should be_visible
+  end
 
-  it "returns you to a url with your content when you paste something" do
+  it "returns you to a url with your content after pasting" do
     my_content = "Hello\nWorld!\n   How are you?"
-    visit '/'
+    visit the_home_page
     fill_in "pasted_content", with: my_content
-    click_on "Paste"
+    the_paste_it_button.click
 
     current_path.should =~ /\/[a-zA-Z0-9]{40}/
     page.should have_content my_content
   end
 
   it "shows an error if you try to paste nothing"
+
+  it "shows you an error if you ask for a key which isn't there"
 
 end

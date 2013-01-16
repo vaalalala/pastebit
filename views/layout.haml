@@ -2,7 +2,15 @@
   %head
     %title PasteBit
     %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
+
     %link{"rel" => "stylesheet", "href" => "css/bootstrap.min.css", "type" => "text/css"}
+    %style body { padding-top: 60px; }
+    %link{"rel" => "stylesheet", "href" => "css/bootstrap-responsive.min.css", "type" => "text/css"}
   %body
-    %h1 PasteBit
-    %div= yield
+    %div{class: "navbar navbar-inverse navbar-fixed-top"}
+      %div{class: "navbar-inner"}
+        %div{class: "container"}
+          %a{class: "brand", href: "/"} PasteBit
+          %p{class: "navbar-text"} The dumb place to stash a few bits
+    %div{class: 'container'}
+      %div= yield
