@@ -11,6 +11,10 @@
       %div{class: "navbar-inner"}
         %div{class: "container"}
           %a{class: "brand", href: "/"} PasteBit
-          %p{class: "navbar-text"} The dumb place to stash a few bits
+          %p{class: "navbar-text"} A dumb place to stash a few bits
+    -if flash[:error]
+      %div{class: "container alert alert-error"}= flash[:error]
+    -if flash[:info]
+      %div{class: "container alert alert-message"}= flash[:info]
     %div{class: 'container'}
       %div= yield

@@ -3,6 +3,7 @@ source :rubygems
 gem "rake"
 gem "sinatra"
 gem "haml"
+gem "rack-flash3"
 
 group :test do
   gem "cucumber"

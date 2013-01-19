@@ -42,8 +42,17 @@ describe 'The PasteBit App', type: :feature do
     page.should have_content my_content
   end
 
-  it "shows an error if you try to paste nothing"
+  it "shows an error if you try to paste nothing" do
+    visit the_home_page
+    the_paste_it_button.click
+
+    page.should have_content "You should enter some content before click the Paste button!"
+  end
 
   it "shows you an error if you ask for a key which isn't there"
+
+  it "gives you a link to copy on the content page"
+
+  it "keeps the format the same on the content page"
 
 end
