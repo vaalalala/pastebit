@@ -30,9 +30,10 @@ class PasteBit < Sinatra::Base
     haml :content, :locals => {content: content}
   end
 
+  private
   def valid_pasted_content_available(params)
-    content = params[:pasted_content]
-    !(content.nil? || content.to_s.empty?)
+    content = params[:pasted_content] || ''
+    !(content.strip.empty?)
   end
 
   def warn_user_about_invalid_pasted_content
