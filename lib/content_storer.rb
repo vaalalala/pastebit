@@ -7,13 +7,13 @@ class ContentStorer
   end
 
   def store content
-    return '' if content.nil? || content.size == 0
+    return '' if content.nil? || content.empty?
     key = Digest::SHA1.hexdigest(@salt + content)
     @storage[key] = content
     key
   end
 
   def retreive key
-    @storage.fetch key
+    @storage[key]
   end
 end

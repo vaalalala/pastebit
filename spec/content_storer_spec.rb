@@ -50,8 +50,8 @@ describe ContentStorer do
       subject.retreive(key).should == example_content
     end
 
-    it "raises an exception when given an invalid key" do
-      expect { subject.retreive "invalid key" }.to raise_error
+    it "returns nil if there is no content for that key" do
+      subject.retreive("invalid key").should be_nil
     end
 
   end

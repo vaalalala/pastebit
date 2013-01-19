@@ -1,1 +1,6 @@
-%div{name: content}= content
+.links
+  %p
+    %a{href: key} Link to this page
+  %p
+    %a{href: key}= full_url(key)
+.content= content

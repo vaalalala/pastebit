@@ -27,7 +27,21 @@ class PasteBit < Sinatra::Base
 
   get '/:key' do
     content = @content.retreive params[:key]
-    haml :content, :locals => {content: content}
+    if content
+      haml :content, :locals => {content: content, key: params[:key]}
+    else
+      haml :missing_key
+    end
+  end
+
+  helpers do
+    def base_url
+      @base_url ||= "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}"
+    end
+
+    def full_url path
+      Array([base_url,path].flatten).join '/'
+    end
   end
 
   private

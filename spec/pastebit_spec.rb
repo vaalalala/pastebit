@@ -49,9 +49,19 @@ describe 'The PasteBit App', type: :feature do
     page.should have_content "You should enter some content before click the Paste button!"
   end
 
-  it "shows you an error if you ask for a key which isn't there"
+  it "shows you an error if you ask for a key which isn't there" do
+    visit '/not-a-valid-key'
 
-  it "gives you a link to copy on the content page"
+    page.should have_content 'Nothing is stored here yet!'
+  end
+
+  it "gives you a link to copy on the content page" do
+    visit the_home_page
+    fill_in "pasted_content", with: "some content"
+    the_paste_it_button.click
+
+    page.should have_content "Link to this page"
+  end
 
   it "keeps the format the same on the content page"
 
