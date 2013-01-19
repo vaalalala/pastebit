@@ -14,15 +14,16 @@ if [ $? != 0 ]; then
   tmux new-session -s $tmux_session -n monitoring -d
 
   tmux send-keys -t ${tmux_session}:1 'guard' C-m
-  tmux split-window -t $tmux_session -p 20 -h
+  tmux split-window -t $tmux_session -p 25 -h
+
   tmux send-keys -t ${tmux_session}:1.2 'bundle exec rackup -p 4567' C-m
 
   tmux new-window -t $tmux_session -n shell
   tmux split-window -t ${tmux_session}:2 -h -p 20
-  tmux send-keys -t ${tmux_session}:2.2 'watch -n 5 -t git status -sb' C-m
+  tmux send-keys -t ${tmux_session}:2.1 'gvim' C-m
+  tmux send-keys -t ${tmux_session}:2.2 'watch -c -n 5 -t git status -sb' C-m
 
   tmux select-window -t ${tmux_session}:1
-  gvim
 fi
 tmux attach -t $tmux_session
 
