@@ -1,6 +1,7 @@
-.links
-  %p
+.content
+  %pre= content
+.row-fluid
+  .span4
     %a{href: key} Link to this page
-  %p
+  .span4.offset3
     %a{href: key}= full_url(key)
-.content= content
