@@ -62,4 +62,14 @@ describe 'The PasteBit App', type: :feature do
 
     page.should have_content "Link to this page"
   end
+
+  it "escapes content to avoid rendering pasted html" do
+    html_content = "<div>Hello</div>"
+    visit the_home_page
+    fill_in "pasted_content", with: html_content
+    the_paste_it_button.click
+
+    page.should have_content html_content
+  end
+
 end

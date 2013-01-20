@@ -8,12 +8,11 @@ class PasteBit < Sinatra::Base
   use Rack::Flash
 
   def initialize
-    @content = ContentStorer.new
     super
+    @content = ContentStorer.new
   end
 
   get '/' do
-    locals = { :error_message => params[:error_message] }
     haml :index
   end
 
@@ -28,7 +27,7 @@ class PasteBit < Sinatra::Base
   get '/:key' do
     content = @content.retreive params[:key]
     if content
-      haml :content, :locals => {content: content, key: params[:key]}
+      haml :content, :locals => {content: h(content), key: params[:key]}
     else
       haml :missing_key
     end
@@ -41,6 +40,10 @@ class PasteBit < Sinatra::Base
 
     def full_url path
       Array([base_url,path].flatten).join '/'
+    end
+
+    def h(text)
+      Rack::Utils.escape_html(text)
     end
   end
 
