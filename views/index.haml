@@ -1,6 +1,6 @@
-%h2 Paste Ahoy!
+%h2 Paste Away!
 %p Paste your content into the box below and hit the "Paste it" button
 .fluid-row
   %form{id: 'paste_form', action: '/store', method: 'post'}
     %textarea{name:"pasted_content", class: 'span12', rows: 15}
-    %input{id: 'paste_button', type:'submit', value:'Paste it!'}
+    %input{id: 'paste_button', type:'submit', value:'Paste it!', class: "btn btn-primary"}
