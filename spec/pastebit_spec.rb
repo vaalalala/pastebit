@@ -62,7 +62,4 @@ describe 'The PasteBit App', type: :feature do
 
     page.should have_content "Link to this page"
   end
-
-  it "keeps the format the same on the content page"
-
 end
