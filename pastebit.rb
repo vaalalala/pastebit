@@ -2,6 +2,7 @@ require 'sinatra/base'
 require_relative 'lib/content_storer'
 require 'haml'
 require 'rack-flash'
+require 'pygments'
 
 class PasteBit < Sinatra::Base
   enable :sessions
@@ -27,7 +28,8 @@ class PasteBit < Sinatra::Base
   get '/:key' do
     content = @content.retreive params[:key]
     if content
-      haml :content, :locals => {content: h(content), key: params[:key]}
+      pretty_content = Pygments.highlight(content)
+      haml :content, :locals => {content: pretty_content, key: params[:key]}
     else
       haml :missing_key
     end

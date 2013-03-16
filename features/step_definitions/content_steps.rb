@@ -6,6 +6,7 @@ Given /^I have some text$/ do
   @content = "Hello world!"
 end
 
+
 When /^I go to the homepage$/ do
   visit '/'
 end

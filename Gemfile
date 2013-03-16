@@ -1,9 +1,10 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem "rake"
 gem "sinatra"
 gem "haml"
 gem "rack-flash3"
+gem "pygments.rb"
 
 group :test do
   gem "cucumber"
